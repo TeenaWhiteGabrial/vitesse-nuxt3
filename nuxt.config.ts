@@ -9,8 +9,18 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
     '@nuxt/eslint',
+    '@element-plus/nuxt'
   ],
+  plugins: [
+    '~/plugins/init.server.ts' // @ 和 ~ 默认指向项目根目录
 
+  ],
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    },
+  ],
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
     // but missing on offline, disabling extraction it until fixed
@@ -18,7 +28,9 @@ export default defineNuxtConfig({
     renderJsonPayloads: true,
     typedPages: true,
   },
-
+  alias: {
+    '#': './types' // 别名
+  },
   css: [
     '@unocss/reset/tailwind.css',
   ],
@@ -38,6 +50,13 @@ export default defineNuxtConfig({
       routes: ['/'],
       ignore: ['/hi'],
     },
+    devProxy: {
+      "/open": {
+        target: "http://localhost:8080/",
+        changeOrigin: true,
+        prependPath: true,
+      }
+    }
   },
 
   app: {

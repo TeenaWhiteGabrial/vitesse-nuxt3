@@ -1,3 +1,24 @@
 {
-  "extends": "./.nuxt/tsconfig.json"
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": false,
+    "types": [
+      "vite/client"
+    ],
+    "paths": {
+      "~/*": [
+        "./*"
+      ],
+      "@/*": [
+        "./*"
+      ],
+      "#/*": [
+        "./types/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+  ]
 }

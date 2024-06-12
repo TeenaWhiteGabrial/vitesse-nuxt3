@@ -1,9 +1,14 @@
 <template>
-  <main class="px-10 py-20 text-center">
+  <TopHeader></TopHeader>
+  <ColumnHeader></ColumnHeader>
+  <main>
     <slot />
-    <Footer />
-    <div class="mx-auto mt-5 text-center text-sm opacity-25">
-      [Default Layout]
-    </div>
   </main>
+   <Footer />
 </template>
+<style lang="scss" scoped>
+.app-main {
+  width: 100%;
+
+}
+</style>
