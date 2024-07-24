@@ -13,7 +13,6 @@ export default defineNuxtConfig({
   ],
   plugins: [
     '~/plugins/init.server.ts' // @ 和 ~ 默认指向项目根目录
-
   ],
   components: [
     {
