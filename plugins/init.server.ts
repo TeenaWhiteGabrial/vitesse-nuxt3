@@ -7,4 +7,5 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     // })
     // const { data } = initialData
     // nuxtApp.provide('initialData', data) // 使用依赖注入储存在上下文中
+    console.log(`111111111111`, process.env.LOGIN_URL, process.env.key)
 })
