@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { useHead, useNuxtApp } from '.nuxt/imports'
+import { appName } from '~/constants'
+
 useHead({
-  title: useNuxtApp().$initialData?.name
+  title: appName,
 })
 </script>
 
