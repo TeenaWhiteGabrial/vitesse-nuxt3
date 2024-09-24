@@ -2,7 +2,10 @@
 import { appName } from '~/constants'
 
 useHead({
-  title: appName,
+  title: `${appName}`,
+  link: [
+    { rel: 'icon', type: 'image/svg+xml', href: 'avatar002.png' },
+  ],
 })
 </script>
 
@@ -10,6 +13,7 @@ useHead({
   <VitePwaManifest />
   <NuxtLayout>
     <NuxtPage />
+    <DragBall />
   </NuxtLayout>
 </template>
 

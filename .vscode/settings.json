@@ -42,6 +42,7 @@
   "eslint.options": {
     "plugins": null
   },
+  "eslint.run": "onSave",
   "interline-translate.knownPopularWordCount": 6000,
   "iconify.annotations": true,
   "iconify.inplace": true
