@@ -6,9 +6,12 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@unocss/nuxt',
     '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
     '@nuxt/eslint',
+    '@nuxt/icon',
+    '@vant/nuxt',
   ],
 
   experimental: {
@@ -21,8 +24,8 @@ export default defineNuxtConfig({
 
   css: [
     '@unocss/reset/tailwind.css',
-  ],
 
+  ],
   colorMode: {
     classSuffix: '',
   },
@@ -44,8 +47,6 @@ export default defineNuxtConfig({
     head: {
       viewport: 'width=device-width,initial-scale=1',
       link: [
-        // { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
-        // { rel: 'icon', type: 'image/svg+xml', href: 'icon.png' },
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       ],
       meta: [
@@ -56,8 +57,8 @@ export default defineNuxtConfig({
         { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#222222' },
       ],
     },
-  },
 
+  },
   pwa,
   // 与VueDevTools 互斥
   devtools: {
@@ -68,16 +69,36 @@ export default defineNuxtConfig({
     // For UnoCSS
     inlineStyles: false,
   },
-
   eslint: {
     config: {
       standalone: false,
     },
   },
-
   future: {
     compatibilityVersion: 4,
   },
 
   compatibilityDate: '2024-08-14',
+  // 运行时配置
+  runtimeConfig: {
+    public: {
+      // eslint-disable-next-line node/prefer-global/process
+      apiBase: process.env.NUXT_PUBLIC_API_BASE, // 基础请求服务器地址
+    },
+  },
+
+  piniaPersistedstate: {
+    cookieOptions: { // 过期时间
+      maxAge: 2 * 365 * 24 * 60 * 60 * 1000,
+    },
+    storage: 'localStorage',
+  },
+  icon: {
+    customCollections: [
+      {
+        prefix: 'my-icon',
+        dir: './app/assets/icons',
+      },
+    ],
+  },
 })

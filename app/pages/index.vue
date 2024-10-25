@@ -1,13 +1,13 @@
 <script setup lang="ts">
-definePageMeta({
-  layout: 'home',
-})
+  definePageMeta({
+    layout: 'home',
+  })
 
-const online = useOnline()
+  const online = useOnline()
 </script>
 
 <template>
-  <div h-1000>
+  <div m-total-header h-1000>
     <Logos mb-6 />
     <Suspense>
       <ClientOnly>

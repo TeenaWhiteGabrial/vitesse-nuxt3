@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+    --header-total-height: 5.8125rem;
+    --header-height: 4.5rem;
+    --header-column-heright: 4.25rem;
+}

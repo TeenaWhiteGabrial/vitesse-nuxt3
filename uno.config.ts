@@ -10,42 +10,29 @@ import {
 } from 'unocss'
 
 export default defineConfig({
-  // rules: [
-  //   [/^left-(\d+)$/, ([, d]) => ({ left: `${(Number(d ?? 0)) / 4}rem` })],
-  //   [/^top-(\d+)$/, ([, d]) => ({ top: `${(Number(d ?? 0)) / 4}rem` })],
-  // ],
   shortcuts: [
-    // [/^fixed-(\d+)-(\d+)$/, (,, left,, top)=> `fixed left-${left} top-${top}` ],
-
-    ['btn', 'px-4 py-1 rounded inline-block bg-teal-600 text-white cursor-pointer hover:bg-teal-700 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50'],
+    ['btn', 'px-4 py-1.5 rounded inline-block text-3.5 bg-[#064eab] text-white cursor-pointer disabled:cursor-default'],
     ['icon-btn', 'inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600'],
-    [/^fixed-\d+-\d+$/, ([, c, e]) => `fixed left-${c} top-${e}`],
-    // flex
-    [
-      /^f-(([cse])(-([cseba]))*)$/,
-      ([, , g1, , g2]) => {
-        let style = ``
-        const temps = [
-          { k: 'c', v: 'center' },
-          { k: 's', v: 'start' },
-          { k: 'e', v: 'end' },
-          { k: 'b', v: 'between' },
-          { k: 'a', v: 'around' },
-        ]
-
-        const r1 = temps.find(i => i.k === g1)
-        style = `flex items-${r1?.v || 'center'} content-${r1?.v || 'center'}`
-
-        if (g2) {
-          const r2 = temps.find(i => i.k === g2)
-          style += ` justify-${r2?.v || 'center'}`
-        }
-
-        return style
-      },
-    ],
   ],
-
+  theme: {
+    colors: {
+      linkColor: '#005BFC',
+    },
+    breakpoints: {
+      pc: '1200px',
+      // => @media (min-width: 1200px) { ... }
+    },
+    height: { // 高度配置
+      'header-height': '4.5rem', // 栏目高度
+      'column-height': '4.25rem', // 除去底部的栏目高度
+    },
+    lineHeight: { // 行高配置
+      'column-height': '4.25rem', // 除去底部的栏目高度
+    },
+    spacing: { // 间距配置
+      'total-header': '5.8125rem', // topHeader + header 的高度
+    },
+  },
   presets: [
     // 默认预设，包括Tailwind CSS, Windi CSS, Bootstrap,是这些的通用超集
     presetUno(),
@@ -55,13 +42,14 @@ export default defineConfig({
       scale: 1.2,
     }),
     presetTypography(),
-    presetWebFonts({
-      fonts: {
-        sans: 'DM Sans',
-        serif: 'DM Serif Display',
-        mono: 'DM Mono',
-      },
-    }),
+
+    // presetWebFonts({
+    //   fonts: {
+    //     sans: 'DM Sans',
+    //     serif: 'DM Serif Display',
+    //     mono: 'DM Mono',
+    //   },
+    // }),
   ],
   transformers: [
     transformerDirectives(),
