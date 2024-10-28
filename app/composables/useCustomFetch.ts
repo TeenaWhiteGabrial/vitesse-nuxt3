@@ -1,95 +1,50 @@
-/* eslint-disable ts/ban-ts-comment */
-import type { NitroFetchRequest } from 'nitropack'
-import type { FetchOptions } from 'ofetch'
+import type { FetchOptions, ResponseType } from 'ofetch'
+import type { ApiResponse } from '~/types'
 
-interface Params {
-    url: NitroFetchRequest
-    opts: FetchOptions<any>
-    method?: 'get' | 'post'
-    hasToken?: boolean
-    contentType?: 'application/x-www-form-urlencoded' | 'application/json'
+// 自定义 useFetch 选项类型
+interface CustomFetchOptions<T extends ResponseType> extends FetchOptions<T> {
+    method?: 'GET' | 'POST'
+    withoutToken?: boolean
 }
+// 全局的 baseURL
+const config = useRuntimeConfig()
+const BASE_URL = config.public.apiBase
 
-// 转换动态接口，兼容类似'/article/:id'这样的动态接口
-function replacePathVariables(url: NitroFetchRequest, params: any = {}) {
-    if (Object.keys(params).length === 0) {
-        return url
-    }
-    const regex = /\/:(\w+)/g
-    let formattedURL = url as string
-    let m = regex.exec(formattedURL)
-    while (m) {
-        if (m.index === regex.lastIndex) {
-            regex.lastIndex += 1
-        }
-        // @ts-ignore
-        if (params[m[1]] === undefined) {
-            throw new Error(`"${m[1]}" is not provided in params`)
-        }
-        // @ts-ignore
-        formattedURL = formattedURL.replace(`:${m[1]}`, params[m[1]])
-        // @ts-ignore
-        delete params[m[1]]
-        m = regex.exec(formattedURL)
-    }
-    return formattedURL
-}
+// 自定义 useFetch composable
+export async function useCustomFetch<T extends ResponseType>(path: string, options: CustomFetchOptions<T> = {}) {
+    // 获取 token（如果不需要 token，则为 null）
+    const token = options.withoutToken ? null : useCookie('token').value
 
-export async function getFetchData({
-    url,
-    opts,
-    method = 'get',
-    hasToken = false, // 请求携带token
-    contentType = 'application/json',
-}: Params) {
-    const config = useRuntimeConfig()
-    const requestURL = replacePathVariables(url, opts)
-    const { data } = await useFetch(requestURL, {
-        method,
-        // ofetch库会自动识别请求地址，对于url已包含域名的请求不会再拼接baseURL
-        // @ts-ignore
-        baseURL: config.public.apiBase,
-        // onRequest相当于请求拦截
-        onRequest({ options }) {
-            // 设置请求头
-            options.headers = { 'Content-Type': contentType }
-            if (hasToken === true) {
-                options.headers.Authorization = ``
+    // 配置默认选项
+    const defaultOptions: CustomFetchOptions<T> = {
+        method: 'GET',
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+        baseURL: BASE_URL, // 设置默认 baseURL
+        ...options,
+    }
+
+    const { data } = useFetch<ApiResponse<T>>(path, {
+        ...defaultOptions,
+        async onResponse({ response }) {
+            const { code, msg, data } = await response.json() as ApiResponse<T>
+            if (code === 200) {
+                return { code, msg, data }
             }
-            // 设置请求参数
-            if (method === 'post') {
-                options.body = { ...opts }
+            else if (code === 401) {
+                // 未授权，跳转到登录页面
+            }
+            else if (code === 500) {
+                // 服务器错误，弹窗提示
             }
             else {
-                options.query = { ...opts }
+                // 其他错误，抛出错误消息
+                throw new Error(msg || '请求失败')
             }
         },
-        // onResponse相当于响应拦截
-        onResponse({ response }) {
-            // 处理响应数据
-            if (response._data.error) {
-                console.warn(
-                    '=== error url: ',
-                    url,
-                    '\n params:',
-                    opts,
-                    '\n response:',
-                    response._data,
-                )
-            }
-            else {
-                return response
-            }
-        },
-        // eslint-disable-next-line unused-imports/no-unused-vars
-        onRequestError({ request, options, error }) {
-            // 处理请求错误
-        },
-        // eslint-disable-next-line unused-imports/no-unused-vars
-        onResponseError({ request, response, options }) {
-            // 处理响应错误
+        // 错误处理
+        onResponseError() {
+
         },
     })
-    // 这里data本身是个ref对象，将其内部值抛出去方便调用时获得数据。这里确定值是Response类型
     return data.value
 }

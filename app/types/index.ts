@@ -8,10 +8,10 @@ enum CodeEnum {
     InternalServerErrir = 500, // 服务器内部错误
 }
 /** 接口返回值 */
-export interface ResponseData {
+export interface ApiResponse<T> {
     code: CodeEnum
     msg: string
-    data: any
+    data: T
 }
 
 /**  资源 */
