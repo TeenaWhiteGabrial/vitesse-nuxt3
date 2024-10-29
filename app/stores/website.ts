@@ -8,10 +8,8 @@ export const useWebsiteStore = defineStore('websiteStore', {
     }),
     actions: {
         async fetch() {
-            const resData: any = await getFetchData({
-                url: '/gateway/site',
-                opts: {},
-            })
+            const resData: any = await useCustomFetch('/gateway/site')
+
             if (resData.code === 200) {
                 this.name = resData.data.name
                 this.description = resData.data.description

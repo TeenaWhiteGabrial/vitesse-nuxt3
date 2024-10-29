@@ -1,16 +1,12 @@
 <script setup lang="ts">
   const website = useWebsiteStore()
   await callOnce(website.fetch)
-
   useHead({
     title: `${website.description || website.name}`,
     link: [
       { rel: 'icon', type: 'image/svg+xml', href: website.icon },
     ],
   })
-
-  const resource = useResourceStore()
-  await callOnce(resource.fetch)
 </script>
 
 <template>

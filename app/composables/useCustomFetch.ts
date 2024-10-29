@@ -6,14 +6,14 @@ interface CustomFetchOptions<T extends ResponseType> extends FetchOptions<T> {
     method?: 'GET' | 'POST'
     withoutToken?: boolean
 }
-// 全局的 baseURL
-const config = useRuntimeConfig()
-const BASE_URL = config.public.apiBase
 
 // 自定义 useFetch composable
 export async function useCustomFetch<T extends ResponseType>(path: string, options: CustomFetchOptions<T> = {}) {
     // 获取 token（如果不需要 token，则为 null）
     const token = options.withoutToken ? null : useCookie('token').value
+    // 全局的 baseURL
+    const config = useRuntimeConfig()
+    const BASE_URL = config.public.apiBase
 
     // 配置默认选项
     const defaultOptions: CustomFetchOptions<T> = {
@@ -23,10 +23,11 @@ export async function useCustomFetch<T extends ResponseType>(path: string, optio
         ...options,
     }
 
-    const { data } = useFetch<ApiResponse<T>>(path, {
+    const { data } = await useFetch<ApiResponse<T>>(path, {
         ...defaultOptions,
         async onResponse({ response }) {
-            const { code, msg, data } = await response.json() as ApiResponse<T>
+            const { code, msg, data } = response._data
+
             if (code === 200) {
                 return { code, msg, data }
             }

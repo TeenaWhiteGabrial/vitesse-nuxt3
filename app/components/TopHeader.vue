@@ -2,10 +2,7 @@
   const language = 'EN'
 
   let siteList: any[] = []
-  const resData: any = await getFetchData({
-    url: '/gateway/portal/open/substation/getSubstationTree',
-    opts: {},
-  })
+  const resData: any = await useCustomFetch('/gateway/portal/open/substation/getSubstationTree')
   if (resData.code === 200) {
     siteList = resData.data
   }

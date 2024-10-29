@@ -9,10 +9,7 @@
     columnLink: string
   }
   let columnList: any[] = []
-  const resData: any = await getFetchData({
-    url: '/gateway/portal/open/columns',
-    opts: {},
-  })
+  const resData: any = await useCustomFetch('/gateway/portal/open/columns')
   if (resData.code === 200) {
     resData.data.sort((a: Column, b: Column) => {
       return a.sequence - b.sequence
