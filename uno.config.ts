@@ -18,6 +18,7 @@ export default defineConfig({
   theme: {
     colors: {
       linkColor: '#005BFC',
+      activeColor: '#0e6dff',
     },
     breakpoints: {
       pc: '1200px',

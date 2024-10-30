@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@vite-pwa/nuxt',
     '@vueuse/nuxt',
-    '@element-plus/nuxt', // 依赖的dayjs有问题，需要手动安装dayjs
+    '@element-plus/nuxt', // 依赖的dayjs存在问题，需要手动安装dayjs
   ],
 
   experimental: {
