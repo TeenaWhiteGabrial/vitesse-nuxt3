@@ -3,15 +3,15 @@ import { appDescription } from './app/constants/index'
 
 export default defineNuxtConfig({
   modules: [
-    '@vueuse/nuxt',
     '@unocss/nuxt',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     '@nuxtjs/color-mode',
-    '@vite-pwa/nuxt',
     '@nuxt/eslint',
     '@nuxt/icon',
-    '@vant/nuxt',
+    '@vite-pwa/nuxt',
+    '@vueuse/nuxt',
+    '@element-plus/nuxt', // 依赖的dayjs有问题，需要手动安装dayjs
   ],
 
   experimental: {
@@ -24,7 +24,7 @@ export default defineNuxtConfig({
 
   css: [
     '@unocss/reset/tailwind.css',
-
+    '@/assets/css/common.css',
   ],
   colorMode: {
     classSuffix: '',
@@ -62,7 +62,7 @@ export default defineNuxtConfig({
   pwa,
   // 与VueDevTools 互斥
   devtools: {
-    enabled: true,
+    enabled: false,
   },
 
   features: {
@@ -101,4 +101,8 @@ export default defineNuxtConfig({
       },
     ],
   },
+  // elementPlus: {
+  //   icon: 'ElIcon',
+  //   themes: ['dark'],
+  // },
 })

@@ -13,6 +13,7 @@ export default defineConfig({
   shortcuts: [
     ['btn', 'px-4 py-1.5 rounded inline-block text-3.5 bg-[#064eab] text-white cursor-pointer disabled:cursor-default'],
     ['icon-btn', 'inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600'],
+    ['mask', 'block fixed top-total-header right-0 bottom-0 left-0 bg-black/50 -z-1'],
   ],
   theme: {
     colors: {
