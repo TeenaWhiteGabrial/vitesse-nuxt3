@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<style lang="css" scoped>
+<style scoped>
   :deep(.el-input__wrapper) {
     border-radius: 5rem;
   }

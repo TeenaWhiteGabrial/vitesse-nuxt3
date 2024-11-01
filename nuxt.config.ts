@@ -12,8 +12,8 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@vueuse/nuxt',
     '@element-plus/nuxt', // 依赖的dayjs存在问题，需要手动安装dayjs
+    'nuxt-lodash',
   ],
-
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
     // but missing on offline, disabling extraction it until fixed
@@ -101,8 +101,11 @@ export default defineNuxtConfig({
       },
     ],
   },
-  // elementPlus: {
-  //   icon: 'ElIcon',
-  //   themes: ['dark'],
-  // },
+  lodash: {
+    prefix: '_',
+  },
+  elementPlus: {
+    icon: 'ElIcon',
+    themes: ['dark'],
+  },
 })

@@ -1,5 +1,8 @@
-export function jumpLink(url: string, type: string = '_blank') {
-    if (!url) {
+/**
+ * 有条件的跳转
+ */
+export function jumpLink({ url, type = '_blank', ifJump = true }: { url: string, type?: string, ifJump?: boolean }) {
+    if (!url || !ifJump) {
         return ''
     }
     else if (url.indexOf('http') === 0) {

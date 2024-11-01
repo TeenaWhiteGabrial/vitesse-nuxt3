@@ -34,6 +34,7 @@
     "eslint": "^9.9.1",
     "eslint-plugin-format": "^0.1.2",
     "nuxt": "^3.13.0",
+    "nuxt-lodash": "^2.5.3",
     "pinia": "^2.2.2",
     "sass-embedded": "^1.79.3",
     "typescript": "^5.5.4",

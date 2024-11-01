@@ -64,7 +64,7 @@
     "yaml"
   ],
   "eslint.options": {
-    "plugins": null,
+    "plugins": null
   },
   "eslint.run": "onSave",
   "interline-translate.knownPopularWordCount": 6000,

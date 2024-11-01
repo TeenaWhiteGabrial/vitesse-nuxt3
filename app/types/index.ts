@@ -14,7 +14,21 @@ export interface ApiResponse<T> {
     data: T
 }
 
-/**  资源 */
+/** 资源树一级类别 */
+export interface ResourceMultiCategory {
+    name: string
+    multicategoryType: string
+    multicategoryList: ResourceCategory[]
+}
+
+/** 资源树二级类别 */
+export interface ResourceCategory {
+    categoryId: string
+    categoryName: string
+    unitList: Resource[]
+}
+
+/**  资源详细信息 */
 export interface Resource {
     id: string
     name: string
@@ -39,4 +53,14 @@ export interface Resource {
     organizeId: string
     measurementUnit: string
     changeRate: string
+}
+
+/** 栏目 */
+export interface Column {
+    id: string
+    sequence?: number | string
+    isShow: number
+    child: Column[]
+    columnName: string
+    columnLink: string
 }

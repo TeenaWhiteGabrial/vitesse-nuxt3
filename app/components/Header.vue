@@ -1,5 +1,13 @@
 <script setup lang="ts">
+  /** 栏目 */
+  const column = useColumnStore()
+  await callOnce(column.getColumnList)
 
+  /** 资源树 */
+  const resource = useResourceStore()
+  await callOnce(resource.getProductionTree)
+  await callOnce(resource.getSolutionTree)
+  await callOnce(resource.getCaseTree)
 </script>
 
 <template>
