@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import { useStorage } from '@vueuse/core' // 本地存储
   import type { Column, Resource, ResourceCategory, ResourceMultiCategory } from '~/types'
 
   /** 菜单展开 */
@@ -148,14 +147,10 @@
   else {
     activeContent.value = columnList[0]?.child
   }
-  /** 一级栏目 */
-  function changeActiveItem(index: number, item: Column) {
+
+  function changeActiveContent(index: number, item: Column, content: Column[]) {
     activeIndex.value = index
     activeLink.value = item.columnLink
-  }
-
-  /** 二级栏目 */
-  function changeActiveContent(content: Column[]) {
     activeContent.value = content
   }
 </script>
@@ -164,15 +159,14 @@
   <div relative mx-5 h-full flex items-center pc:hidden class="group">
     <Icon
       :name="spread ? 'i-line-md:menu-to-close-transition' : 'i-ooui:menu'" size="32"
-      flex cursor-pointer items-center @click="reversalSpread"
+      cursor-pointer items-center @click="reversalSpread"
     />
     <div class="fixed left-0 top-total-header h-full w-full overflow-y-auto b-t-2 b-t-coolgray" :class="spread ? 'flex' : 'hidden'">
       <div class="w-12/31 b-r-1 b-r-bluegray bg-white pt-2">
         <HeaderMobileMenuItem
           v-for="(item, index) in columnList" :key="item.id"
           :active="activeIndex === index" :content="item"
-          @click="changeActiveItem(index, item)"
-          @change-content="changeActiveContent"
+          @change-active-item="(content) => changeActiveContent(index, item, content)"
         />
       </div>
       <HeaderMobileMenuContent flex-1 bg-white :is-tree="isTree(activeLink)" :content="activeContent" />

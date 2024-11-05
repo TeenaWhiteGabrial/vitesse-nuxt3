@@ -2,15 +2,20 @@
   import type { Column } from '~/types'
 
   const { content, active } = defineProps(['content', 'active'])
-  const emit = defineEmits(['changeContent'])
+  const emit = defineEmits(['changeActiveItem'])
   const isTree = ['/product', '/solution', '/case'].includes(content.columnLink)
-  const activeIndex = ref(0)
-  function changeActive(idx: number, content: Column, isParentTree: boolean) {
-    if (isParentTree) {
-      return
+  /** 树状数据的一级栏目 */
+  const activeChildIndex = ref(0)
+
+  function changeActive(idx: number, content: Column[], isParentTree: boolean) {
+    activeChildIndex.value = idx
+    // 树状数据的一级栏目
+    if (isParentTree && content[0]) {
+      emit('changeActiveItem', _CloneDeep(content[0].child))
     }
-    activeIndex.value = idx
-    emit('changeContent', _CloneDeep(content))
+    else {
+      emit('changeActiveItem', _CloneDeep(content))
+    }
   }
 </script>
 
@@ -25,7 +30,7 @@
     <div :class="isTree && active ? 'block' : 'hidden'" w-full class="bg-[#F7FBFF]">
       <div
         v-for="(item, index) in content.child" :key="item.id" py-2 pl-4 text-left
-        :class="{ 'font-bold color-activeColor': activeIndex === index }"
+        :class="{ 'font-bold color-activeColor': activeChildIndex === index }"
         @click="changeActive(index, item.child, false)"
       >
         {{ item.columnName }}

@@ -7,7 +7,7 @@
   <div v-if="isTree" pt-4>
     <ElCollapse v-model="activeName" ml-10>
       <ElCollapseItem v-for="(category, index) in content" :key="category.id" :title="category.columnName" :name="`${index}`">
-        <div v-for="item in category.child" :key="item.id" text-left font-bold>
+        <div v-for="item in category.child" :key="item.id" text-left font-bold @click="jumpLink({ url: item.columnLink })">
           {{ item.columnName }}
         </div>
       </ElCollapseItem>

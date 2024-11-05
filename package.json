@@ -3,9 +3,9 @@
   "private": true,
   "packageManager": "pnpm@9.9.0",
   "scripts": {
+    "dev": "nuxi dev --dotenv .env.development",
     "build": "nuxi build --dotenv .env.production",
     "dev:pwa": "VITE_PLUGIN_PWA=true nuxi dev",
-    "dev": "nuxi dev  --dotenv .env.development",
     "generate": "nuxi generate",
     "prepare": "nuxi prepare",
     "start": "node .output/server/index.mjs",

@@ -21,9 +21,10 @@
     >
       <HeaderLogo />
       <HeaderColumn />
-      <HeaderLogin />
       <HeaderMobileSearch />
-      <HeaderMobileUser />
+      <ClientOnly>
+        <HeaderLogin />
+      </ClientOnly>
       <HeaderMobileMenu />
     </div>
   </div>

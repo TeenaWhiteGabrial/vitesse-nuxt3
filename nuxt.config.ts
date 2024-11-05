@@ -78,12 +78,18 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
-  compatibilityDate: '2024-08-14',
+  compatibilityDate: '2024-11-04',
   // 运行时配置
   runtimeConfig: {
     public: {
       // eslint-disable-next-line node/prefer-global/process
       apiBase: process.env.NUXT_PUBLIC_API_BASE, // 基础请求服务器地址
+      // eslint-disable-next-line node/prefer-global/process
+      loginUrl: process.env.NUXT_PUBLIC_LOGIN_URL,
+      // eslint-disable-next-line node/prefer-global/process
+      logoutUrl: process.env.NUXT_PUBLIC_LOGOUT_URL,
+      // eslint-disable-next-line node/prefer-global/process
+      redirectUrl: process.env.NUXT_PUBLIC_DEV_REDIRECTRUL,
     },
   },
 
