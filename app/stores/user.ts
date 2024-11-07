@@ -12,7 +12,10 @@ export const useUserInfoStore = defineStore('userStore', {
             const originUrl = window.location.origin
             this.isLogin = false
             this.userName = ''
-            navigateTo(`${logoutUrl}${originUrl}`)
+            this.phone = ''
+            this.email = ''
+            useCookie('token').value = ''
+            navigateTo(`${logoutUrl}${originUrl}`, { external: true })
         },
     },
     persist: import.meta.client && {

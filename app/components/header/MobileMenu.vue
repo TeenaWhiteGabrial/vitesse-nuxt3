@@ -18,7 +18,7 @@
   const productChildList: Column[] = []
   productionTree.forEach((multicategory: ResourceMultiCategory) => {
     const categoryList: Column[] = []
-    multicategory.multicategoryList.forEach((category: ResourceCategory) => {
+    multicategory?.multicategoryList.forEach((category: ResourceCategory) => {
       const unitList: Column[] = []
       category.unitList.forEach((unit: Resource) => {
         unitList.push({
@@ -52,7 +52,7 @@
   const solutionChildList: Column[] = []
   solutionTree.forEach((multicategory: ResourceMultiCategory) => {
     const categoryList: Column[] = []
-    multicategory.multicategoryList.forEach((category: ResourceCategory) => {
+    multicategory?.multicategoryList.forEach((category: ResourceCategory) => {
       const unitList: Column[] = []
       category.unitList.forEach((unit: Resource) => {
         unitList.push({
@@ -86,7 +86,7 @@
   const caseChildList: Column[] = []
   caseTree.forEach((multicategory: ResourceMultiCategory) => {
     const categoryList: Column[] = []
-    multicategory.multicategoryList.forEach((category: ResourceCategory) => {
+    multicategory?.multicategoryList.forEach((category: ResourceCategory) => {
       const unitList: Column[] = []
       category.unitList.forEach((unit: Resource) => {
         unitList.push({

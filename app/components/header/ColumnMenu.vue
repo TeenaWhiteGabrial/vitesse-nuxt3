@@ -14,14 +14,14 @@
   /** 当前类别索引 */
   const activeIndex = ref(0)
   /** 当前 */
-  const activeUnitList = ref(unitList.value[activeIndex.value].multicategoryList)
+  const activeUnitList = ref(unitList.value[activeIndex.value]?.multicategoryList)
 
   /** 搜索内容 */
   const searchText = ref('')
 
   function changeActiveIndex(idx: number) {
     activeIndex.value = idx
-    activeUnitList.value = unitList.value[activeIndex.value].multicategoryList
+    activeUnitList.value = unitList.value[activeIndex.value]?.multicategoryList
   }
 </script>
 

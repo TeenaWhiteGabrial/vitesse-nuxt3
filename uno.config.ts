@@ -14,12 +14,16 @@ export default defineConfig({
     ['btn', 'px-4 py-1.5 rounded inline-block text-3.5 bg-[#064eab] text-white cursor-pointer disabled:cursor-default'],
     ['icon-btn', 'inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600'],
     ['mask', 'block fixed top-total-header right-0 bottom-0 left-0 bg-black/50 -z-1'],
+    ['floor-title', 'w-full text-center font-bold text-8 text-black'], // 楼层标题
+    ['floor-desc', 'w-full text-center text-3.5 text-slate-400  mt-4'], // 楼层简述
+    ['floor-link', 'w-full cursor-pointer text-center text-4 text-gray-5'], // 查看更多
+    ['floor-mobile-link', 'w-full cursor-pointer text-center text-4 text-activeColor'],
+    ['floor-btn', 'px-4 py-1.5 border-2 rounded inline-block text-3.5 cursor-pointer hover:border-activeColor  hover:font-bold hover:text-activeColor'],
   ],
   theme: {
     colors: {
       linkColor: '#005BFC',
       activeColor: '#0e6dff',
-
     },
     breakpoints: {
       pc: '1200px',

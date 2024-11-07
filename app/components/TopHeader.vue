@@ -12,8 +12,9 @@
   <div bg="#005bff" flex="~ row-reverse" relative h-5.25 w-full text-size-xs color-white lh-5.25>
     <div class="group mr-10 cursor-pointer">
       <span mr-1>云洲子站</span>
-      <Icon name="cuida:caret-down-outline" class="inline-block group-hover:hidden" />
-      <Icon name="cuida:caret-up-outline" class="hidden group-hover:inline-block" />
+
+      <Icon name="my-icon:arrow-down" class="font-b inline-block group-hover:hidden" />
+      <Icon name="my-icon:arrow-up" class="hidden group-hover:inline-block" />
 
       <div absolute left-2.5vw z-9 hidden w-95vw rounded-b-lg b-t-none bg-white py-4 shadow-lg group-hover:block class="bg-[url('~/assets/img/sub-site-bg.jpg')]">
         <div v-for="item in siteList" :key="item.categoryId" class="px-16 py-4 text-left text-gray-700">
@@ -34,7 +35,7 @@
       </div>
     </div>
     <div class="group mr-10 cursor-pointer">
-      <Icon name="material-symbols:language" mr-1 align-middle group-hover:color-bluegray />
+      <Icon name="my-icon:language" mr-1 align-middle group-hover:color-bluegray />
       <span mr-1 group-hover:color-bluegray>{{ language }}</span>
     </div>
   </div>

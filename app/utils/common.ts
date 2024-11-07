@@ -15,3 +15,17 @@ export function jumpLink({ url, type = '_blank', ifJump = true }: { url: string,
         window.open(`${window.location.origin}/${url}`, type)
     }
 }
+
+/**
+ * 填充空白的数据至指定的长度
+ * @param data
+ * @param count
+ */
+export function supplementaryData(data: any[], count: number) {
+    const len = data.length
+    const cloneData = _Clone(data)
+    for (let i = len; i < count; i++) {
+        cloneData.push('')
+    }
+    return cloneData
+}

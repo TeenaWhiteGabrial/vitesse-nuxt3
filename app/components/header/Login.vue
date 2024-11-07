@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  interface loginRes {
+  interface LoginRes {
     access_token: string
   }
 
@@ -12,20 +12,18 @@
   const searchParam = new URLSearchParams(window.location.href)
   const code = searchParam.get('##code')
   if (code) {
-    login(code)
+    await login(code)
   }
   /** 判断token，如果有token，执行获取用户信息逻辑 */
   if (useCookie('token').value) {
-    getUserInfo()
+    await getUserInfo()
   }
 
   /** 获取token */
   async function login(code: string) {
     const url = config.public.redirectUrl || originUrl
 
-    const response: any = await useCustomFetch<loginRes>(`/gateway/portal/user/token?code=${code}&redirectUri=${url}`, {
-      server: false,
-    })
+    const response: any = await $fetch<LoginRes>(`${config.public.apiBase}/gateway/portal/user/token?code=${code}&redirectUri=${url}`)
     if (response.code === 200 && response.data.access_token) {
       userStore.isLogin = true
       useCookie('token').value = response.data.access_token
@@ -33,7 +31,7 @@
   }
   /** 获取用户信息 */
   async function getUserInfo() {
-    const resData: any = await useCustomFetch(`/gateway/portal/user/info/token/${useCookie('token').value}`, { server: false })
+    const resData: any = await $fetch(`${config.public.apiBase}/gateway/portal/user/info/token/${useCookie('token').value}`)
     if (resData.code === 200) {
       userStore.userName = resData.data.userName
       userStore.phone = resData.data.phone
