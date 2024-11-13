@@ -17,6 +17,7 @@
       flex="~ items-start justify-between"
       bg="#fff"
       box-border h-header-height w-full border-collapse overflow-hidden px-2
+      shadow-md
     >
       <HeaderLogo />
       <HeaderColumn />

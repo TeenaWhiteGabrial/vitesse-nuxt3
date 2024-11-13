@@ -29,3 +29,13 @@ export function supplementaryData(data: any[], count: number) {
     }
     return cloneData
 }
+
+/** 日期去掉时分秒 */
+export function dateFormat(date: string) {
+    if (!date) {
+        return ''
+    }
+    else {
+        return date.substring(0, 10)
+    }
+}

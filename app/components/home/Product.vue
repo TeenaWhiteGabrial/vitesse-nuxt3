@@ -31,8 +31,8 @@
       {{ introduction }}
     </div>
     <div class="mx-auto my-7 w-300" hidden pc:block>
-      <el-tabs v-model="activeName" :stretch="true">
-        <el-tab-pane v-for="(category, index) in showData" :key="index" :label="category.category_name" :name="`${index}`">
+      <ElTabs v-model="activeName" :stretch="true">
+        <ElTabPane v-for="(category, index) in showData" :key="index" :label="category.category_name" :name="`${index}`">
           <div grid grid-cols-3 grid-rows-2 gap-5>
             <div v-for="item in category.child" :key="item.id" h-40 flex rounded-lg bg-white p-2>
               <ElImage :src="item.photo" fit="scale-down" />
@@ -49,8 +49,8 @@
               </div>
             </div>
           </div>
-        </el-tab-pane>
-      </el-tabs>
+        </ElTabPane>
+      </ElTabs>
     </div>
     <div pc:text-activecolor mt-3 floor-mobile-link pc:floor-link @click="jumpLink(moreLink)">
       查看更多产品 >>

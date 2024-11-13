@@ -13,6 +13,7 @@ export default defineConfig({
   shortcuts: [
     ['btn', 'px-4 py-1.5 rounded inline-block text-3.5 bg-[#064eab] text-white cursor-pointer disabled:cursor-default'],
     ['icon-btn', 'inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600'],
+    ['btn-transparent', 'border-light border-1 px-4 py-1.5 inline-block text-3.5 text-white cursor-pointer'],
     ['mask', 'block fixed top-total-header right-0 bottom-0 left-0 bg-black/50 -z-1'],
     ['floor-title', 'w-full text-center font-bold text-8 text-black'], // 楼层标题
     ['floor-desc', 'w-full text-center text-3.5 text-slate-400  mt-4'], // 楼层简述
@@ -22,6 +23,7 @@ export default defineConfig({
   ],
   theme: {
     colors: {
+      themeColor: '#0060b2',
       linkColor: '#005BFC',
       activeColor: '#0e6dff',
     },

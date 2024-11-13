@@ -4,7 +4,8 @@
   "packageManager": "pnpm@9.9.0",
   "scripts": {
     "dev": "nuxi dev --dotenv .env.development",
-    "build": "nuxi build --dotenv .env.production",
+    "build:dev": "nuxi build --dotenv .env.development",
+    "build:prod": "nuxi build --dotenv .env.production",
     "dev:pwa": "VITE_PLUGIN_PWA=true nuxi dev",
     "generate": "nuxi generate",
     "prepare": "nuxi prepare",

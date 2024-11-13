@@ -11,7 +11,7 @@ export const useResourceStore = defineStore('resourceStore', {
             const resourceRes: any = await useCustomFetch('/gateway/portal/open/master/units', {
                 method: 'POST',
                 body: {
-                    type: 'case,policy,product,financial',
+                    type: 'case,policy,product,content',
                 },
             })
             if (resourceRes.code === 200) {
