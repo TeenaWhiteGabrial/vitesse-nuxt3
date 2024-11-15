@@ -21,7 +21,7 @@
 </script>
 
 <template>
-  <div m-t-total-header flex flex-col font-sans>
+  <div m-t-total-header flex flex-col font-yahei>
     <HomeBanner -order-2 />
     <HomePoints -order-1 />
     <HomeArchitecture v-if="architectureData.isShow === '1'" :data="architectureData" :style="`order:${architectureData.sequence || 999}`" />

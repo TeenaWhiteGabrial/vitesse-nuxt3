@@ -33,14 +33,14 @@
     <div class="mx-auto my-7 w-300" hidden pc:block>
       <ElTabs v-model="activeName" :stretch="true">
         <ElTabPane v-for="(category, index) in showData" :key="index" :label="category.category_name" :name="`${index}`">
-          <div grid grid-cols-3 grid-rows-2 gap-5>
-            <div v-for="item in category.child" :key="item.id" h-40 flex rounded-lg bg-white p-2>
+          <div grid grid-cols-3 grid-rows-2 gap-5 p-5>
+            <div v-for="item in category.child" :key="item.id" hover:shadow-deep h-40 flex cursor-pointer rounded-lg bg-white p-2 duration-700>
               <ElImage :src="item.photo" fit="scale-down" />
               <div flex-1 pl-2 pt-2>
-                <div>
+                <div line-clamp-1 font-bold>
                   {{ item.name }}
                 </div>
-                <div line-clamp-2 mt-2 h-8 text-3 text-gray-5>
+                <div line-clamp-2 mt-2 h-9 text-3 text-gray-5>
                   {{ item.introduction }}
                 </div>
                 <div mt-5 floor-btn>

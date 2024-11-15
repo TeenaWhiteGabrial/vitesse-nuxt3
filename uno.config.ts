@@ -4,7 +4,7 @@ import {
   presetIcons,
   presetTypography,
   presetUno,
-  presetWebFonts,
+  // presetWebFonts,
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
@@ -19,7 +19,7 @@ export default defineConfig({
     ['floor-desc', 'w-full text-center text-3.5 text-slate-400  mt-4'], // 楼层简述
     ['floor-link', 'w-full cursor-pointer text-center text-4 text-gray-5'], // 查看更多
     ['floor-mobile-link', 'w-full cursor-pointer text-center text-4 text-activeColor'],
-    ['floor-btn', 'px-4 py-1.5 border-2 rounded inline-block text-3.5 cursor-pointer hover:border-activeColor  hover:font-bold hover:text-activeColor'],
+    ['floor-btn', 'px-4 py-1.5 border-1 rounded inline-block text-3.5 cursor-pointer'],
   ],
   theme: {
     colors: {
@@ -40,6 +40,12 @@ export default defineConfig({
     },
     spacing: { // 间距配置
       'total-header': '5.8125rem', // topHeader + header 的高度
+    },
+    fontFamily: {
+      yahei: ['Microsoft yahei', 'Verdana', 'Arial', 'Helvetica', 'sans-serif'],
+    },
+    boxShadow: {
+      deep: '0 1px 6px 2px #999',
     },
   },
   presets: [

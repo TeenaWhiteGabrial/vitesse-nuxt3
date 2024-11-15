@@ -21,7 +21,15 @@ export default defineNuxtConfig({
     renderJsonPayloads: true,
     typedPages: true,
   },
-
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "~/assets/css/variable.scss" as element;`,
+        },
+      },
+    },
+  },
   css: [
     '@unocss/reset/tailwind.css',
     '@/assets/css/common.css',
@@ -113,5 +121,6 @@ export default defineNuxtConfig({
   elementPlus: {
     icon: 'ElIcon',
     themes: ['dark'],
+    importStyle: 'scss',
   },
 })

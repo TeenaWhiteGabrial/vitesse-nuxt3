@@ -1,2 +1,2 @@
-export const appName = '托帕的生态舰'
+export const appName = ''
 export const appDescription = ''
