@@ -23,8 +23,8 @@
       <div class="w-4/5" mx-auto floor-title text-center>
         {{ name }}
       </div>
-      <div absolute z-2>
-        <div mt-10 w-120>
+      <div absolute z-2 ml-25>
+        <div mt-20 w-120>
           {{ introduction }}
         </div>
         <div mt-10 w-120 flex flex-wrap gap-x-40 gap-y-10>
@@ -37,8 +37,9 @@
           </div>
         </div>
       </div>
-      <img mt-25 src="~/assets/img/inBG.png" w-180 class="z-1 ml-1/3">
+      <img mt-25 src="~/assets/img/inBG.png" w-200 class="z-1 ml-1/3">
     </div>
+
     <div relative block min-h-100 bg-gray-1 pt-15 pc:hidden>
       <div absolute z-2 w-full>
         <div floor-title>

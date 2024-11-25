@@ -10,11 +10,11 @@
   <div>
     <div hidden h-31 w-full bg-gray-100 pc:flex>
       <div mx-auto h-full w-300 flex items-center justify-between>
-        <div v-for="(point, index) in pointList" :key="index" box-border h-full w-70 p-x-8 p-y-6>
+        <div v-for="(point, index) in pointList" :key="index" box-border h-full w-70 cursor-pointer p-x-8 p-y-6>
           <div font-bold>
             {{ point.label }}
           </div>
-          <div line-clamp-2 m-t-2 color-gray-600>
+          <div line-clamp-2 m-t-2 color-gray-600 :title="point.value">
             {{ point.value }}
           </div>
         </div>

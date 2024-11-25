@@ -5,6 +5,12 @@ export const useWebsiteStore = defineStore('websiteStore', {
         icon: '', // 网站图标
         logo: '', // 网站logo
         mobileLogo: '', // 移动端LOGO
+
+        friendLinks: [], // 友情链接
+        statements: [], // 法律条款等
+        filing: [], // 备案信息
+        contacts: [], // 联系我们
+        follows: [], // 二维码
     }),
     actions: {
         async fetch() {
@@ -16,6 +22,11 @@ export const useWebsiteStore = defineStore('websiteStore', {
                 this.icon = resData.data.icon
                 this.logo = resData.data.logo
                 this.mobileLogo = resData.data.backlogo
+                this.friendLinks = resData.data.links?.FRIENDLYLINK
+                this.statements = resData.data.links?.STATEMENT
+                this.filing = resData.data.links?.FILING
+                this.contacts = resData.data.links?.CONTACTUS
+                this.follows = resData.data.links?.FOLLOWUS
             }
         },
     },

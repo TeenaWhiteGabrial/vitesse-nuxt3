@@ -25,7 +25,8 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@use "~/assets/css/variable.scss" as element;`,
+          additionalData: `@use "~/assets/css/element.scss" as element;`,
+          silenceDeprecations: ['legacy-js-api'],
         },
       },
     },

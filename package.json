@@ -39,7 +39,6 @@
     "nuxt": "^3.13.0",
     "nuxt-lodash": "^2.5.3",
     "pinia": "^2.2.2",
-    "sass": "^1.81.0",
     "sass-embedded": "^1.79.3",
     "typescript": "^5.5.4",
     "unocss": "^0.64.0",

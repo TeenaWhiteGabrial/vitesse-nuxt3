@@ -62,7 +62,7 @@
               <div line-clamp-2 text-3.5 text-white>
                 {{ showData[activeName].child[activeChildIndex].introduction }}
               </div>
-              <div btn-transparent mt-8>
+              <div mt-8 btn-transparent>
                 了解详情
               </div>
             </div>
@@ -110,6 +110,7 @@
 
   :deep(.mobile .el-tabs__item) {
     color: #fff;
+
   }
 
   :deep(.mobile .el-tabs__item.is-active, .mobile .el-tabs__item:hover) {
@@ -119,4 +120,8 @@
   :deep(.mobile .el-tabs__active-bar) {
     background-color: #FFE170;
   }
+
+  /* :deep(.el-tabs__active-bar) {
+    height: 4px;
+  } */
 </style>

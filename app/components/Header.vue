@@ -11,7 +11,7 @@
 </script>
 
 <template>
-  <div position="fixed left-0 top-0 z-9999" w-full>
+  <div position="fixed left-0 top-0 z-3" w-full>
     <TopHeader />
     <div
       flex="~ items-start justify-between"

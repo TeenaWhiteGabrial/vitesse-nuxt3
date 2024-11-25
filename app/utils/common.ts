@@ -3,7 +3,10 @@
  */
 export function jumpLink({ url, type = '_blank', ifJump = true }: { url: string, type?: string, ifJump?: boolean }) {
     if (!url || !ifJump) {
-        return ''
+        ElMessage({
+            type: 'warning',
+            message: '敬请期待',
+        })
     }
     else if (url.indexOf('http') === 0) {
         window.open(url, type)
